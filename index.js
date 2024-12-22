@@ -1,7 +1,16 @@
 const add = (n1,n2)=>n1+n2
 const sub = (n1,n2)=>n1-n2
+const div = (n1,n2)=>{
+    if(n2==0){
+        console.log("ERROR")
+        return "ERROR"
+    }
+    else {
+        // console.log("ERROR")
+        return n1/n2}
+    
+}
 const mul = (n1,n2)=>n1*n2
-const div = (n1,n2)=>n1/n2
 
 const ops = {
     "+": add,
@@ -26,8 +35,8 @@ const work=function (but,dis){
     
     if (but.textContent== "c"){dis.textContent=""}
     else if (signs.includes(but.textContent)){
-        if (n1){n2 = Number(dis.textContent)
-            dis.textContent = operate(n1,sign,n2)
+        if (n1 => 0){n2 = Number(dis.textContent)
+            dis.textContent = operate(n1,sign,n2) % 1 != 0? parseFloat(operate(n1,sign,n2).toFixed(5)): operate(n1,sign,n2) == "ERROR"?  "ERROR" :operate(n1,sign,n2) 
             n1 = ""
             n2 = ""
             clear = true       
@@ -38,10 +47,15 @@ const work=function (but,dis){
     }
     
     else if (but.textContent== "="){n2 = Number(dis.textContent)
-        dis.textContent = operate(n1,sign,n2)
+        if (n1 => 0 && n2  ) {
+            console.log("hi")
+        dis.textContent =  operate(n1,sign,n2) == "ERROR"?  "ERROR": operate(n1,sign,n2) % 1 == 0? operate(n1,sign,n2) : parseFloat(operate(n1,sign,n2).toFixed(5))
+        console.log("zero")
         n1 = ""
         n2 = ""
-        clear = true       
+        clear = true  
+        }
+        
     }
     else {
         if (clear){
